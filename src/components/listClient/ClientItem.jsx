@@ -1,13 +1,37 @@
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import formOperations from "../../redax/form-operation";
+
+
 export const ClientItem = ({ item }) => {
-  console.log(item);
+  const dispatch = useDispatch();
+
+  const onClick = (e) => {
+    e.preventDefault();
+    dispatch(formOperations.deleteClient(item._id));
+  };
   return (
-    <div>
-      <p>{item.name}</p>
-      <p>{item.ipn}</p>
-      <p>{item.tel}</p>
-      <p>{item.credit}</p>
-      <p>{item.targetCredit}</p>
-      <p>{item.intrest}</p>
-    </div>
+    <>
+      <td>{item.name}</td>
+
+      <td>{item.ipn}</td>
+
+      <td>{item.tel}</td>
+
+      <td>{item.credit}</td>
+
+      <td>{item.targetCredit}</td>
+
+      <td>{item.sum}</td>
+
+      <td>{item.intrest}</td>
+      <button type="button" onClick={onClick}>
+        Видалити
+      </button>
+    </>
   );
+};
+
+ClientItem.propTypes = {
+  item: PropTypes.object,
 };

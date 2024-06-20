@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      {departmentNum !== "mainOffice" &&<FormAddClient/> }
+      {(departmentNum !== "Головний офіс") && (departmentNum !== "charge") &&<FormAddClient/> }
       <ListClient/>
     </>
   );
