@@ -98,7 +98,7 @@ export const FormAddClient = () => {
           <input
             type="tel"
             onChange={handleChangeTel}
-            pattern="067\d{7}"
+            pattern="0\d{9}"
             placeholder="067000000"
           />
         </label>
