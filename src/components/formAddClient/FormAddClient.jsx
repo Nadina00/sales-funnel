@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { department } from "../../redax/form-select";
-//import { errorClient } from "../../redax/form-select";
+import { errorClient } from "../../redax/form-select";
 import formOperations from "../../redax/form-operation";
 import css from "./AddClient.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const FormAddClient = () => {
   const [name, setName] = useState("");
@@ -16,7 +18,7 @@ export const FormAddClient = () => {
   const [intrest, setIntrest] = useState("Зацікавлений");
   const departmentNum = useSelector(department);
   const dispatch = useDispatch();
-  //const error = useSelector(errorClient);
+  const errorAdd = useSelector(errorClient);
 
   const handleChangeName = (e) => {
     e.preventDefault();
@@ -71,6 +73,14 @@ export const FormAddClient = () => {
     setIntrest("Зацікавлений");
     setSum(null);
   };
+
+  const notify = () => {
+    if (errorAdd) {
+      toast("Помилка!");
+    } else {
+      toast("Збережено!");
+    }
+  };
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -81,6 +91,7 @@ export const FormAddClient = () => {
             type="text"
             onChange={handleChangeName}
             placeholder="ПІБ чи назва фірми"
+            value={name}
           />
         </label>
         <label className={css.label}>
@@ -90,6 +101,7 @@ export const FormAddClient = () => {
             onChange={handleChangeIpn}
             pattern="\d{8,10}"
             placeholder="00000000"
+            value={ipn}
           />
         </label>
         <label className={css.label}>
@@ -100,6 +112,7 @@ export const FormAddClient = () => {
             onChange={handleChangeTel}
             pattern="0\d{9}"
             placeholder="067000000"
+            value={tel}
           />
         </label>
         <select onChange={handleChangeCredit} className={css.label}>
@@ -122,6 +135,7 @@ export const FormAddClient = () => {
             type="nubmer"
             onChange={handleChangeSum}
             placeholder="100 000"
+            value={sum}
           />{" "}
           грн.
         </label>
@@ -132,8 +146,13 @@ export const FormAddClient = () => {
           <option value="Зацікавлений">Зацікавлений</option>
           <option value="Не зацікавлений">Незацікавлений</option>
         </select>
-        {departmentNum !== null && <button type="submit">Зберігти</button>}
+        {departmentNum !== null && (
+          <button type="submit" onClick={notify}>
+            Зберігти
+          </button>
+        )}
       </form>
+      <ToastContainer containerId="containerA"/>
     </>
   );
 };
