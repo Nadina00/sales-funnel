@@ -74,6 +74,9 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .box{
+    width: 768px;
+  }
   .wrapper {
     width: 95%;
     max-width: 768px;
@@ -102,6 +105,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .box{
+    width: 320px;
+  }
   .wrapper {
     width: 95%;
     max-width: 320px;

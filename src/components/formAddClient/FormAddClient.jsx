@@ -3,12 +3,15 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { department } from "../../redax/form-select";
 import { errorClient } from "../../redax/form-select";
+import { ModalText } from "../modal/ModalText";
 import formOperations from "../../redax/form-operation";
 import css from "./AddClient.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const FormAddClient = () => {
+  const [isModalText, setIsModalText] = useState(false);
+  const [textNote, setTextNote] = useState("");
   const [name, setName] = useState("");
   const [ipn, setIpn] = useState(null);
   const [tel, setTel] = useState(null);
@@ -51,6 +54,16 @@ export const FormAddClient = () => {
     setIntrest(e.target.value);
   };
 
+  const isModalTextClick = () => {
+    setIsModalText(true);
+  };
+  const onCloseText = (arg) => {
+    setIsModalText(arg);
+  };
+  const onChangeText = (note) => {
+    setTextNote(note);
+  };
+console.log(textNote)
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -63,6 +76,7 @@ export const FormAddClient = () => {
         sum,
         intrest,
         departmentNum,
+        textNote,
       })
     );
     setName("");
@@ -82,7 +96,7 @@ export const FormAddClient = () => {
     }
   };
   return (
-    <>
+    <div className={css.box}>
       <form onSubmit={onSubmit}>
         <label className={css.label}>
           {" "}
@@ -146,13 +160,24 @@ export const FormAddClient = () => {
           <option value="Зацікавлений">Зацікавлений</option>
           <option value="Не зацікавлений">Незацікавлений</option>
         </select>
+        <button type="button" onClick={isModalTextClick} className={css.button}>
+          Примітка
+        </button>
         {departmentNum !== null && (
           <button type="submit" onClick={notify}>
             Зберігти
           </button>
         )}
       </form>
-      <ToastContainer containerId="containerA"/>
-    </>
+      <ToastContainer containerId="containerA" />
+      {isModalText && (
+        <ModalText
+          isModalTextClick={isModalTextClick}
+          onClose={onCloseText}
+          onClickNotify={notify}
+          onClick={onChangeText}
+        />
+      )}
+    </div>
   );
 };

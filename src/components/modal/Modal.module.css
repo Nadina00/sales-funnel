@@ -46,11 +46,32 @@
   }
   .btnClose{
     position: absolute;
+    display: flex;
     right: 7px;
     top: 7px;
     width: 15px;
+    height: 15px;
   }
-
+svg{
+  position: absolute;
+    top: 0;
+    left: 10px;
+}
+.boxText{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  padding: 40px 20px 0 20px;
+  background-color: rgb(97, 95, 139);
+  width: 650px;
+  height: 250px;
+  z-index: 2200;
+}
+.area{
+width: 550px;
+height: 200px;
+}
   @media screen and (max-width: 1200px) {
     .box {
       width: 650px;
@@ -75,6 +96,21 @@
       right: 7px;
       top: 7px;
       width: 15px;
+    }
+    .boxText{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      padding: 40px 20px 0 20px;
+      background-color: rgb(97, 95, 139);
+      width: 550px;
+      height: 200px;
+      z-index: 2200;
+    }
+    .area{
+    width: 500px;
+    height: 150px;
     }
   }
   @media screen and (max-width: 768px) {
@@ -105,5 +141,20 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 5px;
+      }
+      .boxText{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        padding: 40px 20px 0 20px;
+        background-color: rgb(97, 95, 139);
+        width: 250px;
+        height: 200px;
+      
+      }
+      .area{
+      width: 190px;
+      height: 180px;
       }
   }

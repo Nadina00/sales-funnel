@@ -73,7 +73,7 @@ export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
   return (
     <div className={modalCss.modalBackground}>
       <div className={modalCss.box}>
-        <button className={css.btnClose} type="button" onClick={onClickClose}>
+        <button className={modalCss.btnClose} type="button" onClick={onClickClose}>
           <svg
             width="30"
             height="30"

@@ -5,9 +5,10 @@ import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import css from "./ListClient.module.css";
 
-export const ClientItem = ({ item, isModalClick, onClickNotify }) => {
+export const ClientItem = ({ item, isModalClick, onClickNotify, isModalTextClick }) => {
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState(false);
+  const [isModalText, setIsModalText] = useState(false);
 
   const onClick = (e) => {
     e.preventDefault();
@@ -19,6 +20,11 @@ export const ClientItem = ({ item, isModalClick, onClickNotify }) => {
     e.preventDefault();
     setIsModal(true);
     isModalClick(isModal, item);
+  };
+  const onClickModalText = (e) => {
+    e.preventDefault();
+    setIsModalText(true);
+    isModalTextClick(isModalText, item);
   };
   console.log(isModal);
   return (
@@ -46,6 +52,10 @@ export const ClientItem = ({ item, isModalClick, onClickNotify }) => {
           Видалити
         </button>
       </td>
+      <td className={css.btn} data-label="Примітка">
+        <button type="button" onClick={onClickModalText} className={css.button}>Примітка</button>
+      </td>
+
     </>
   );
 };
@@ -53,5 +63,6 @@ export const ClientItem = ({ item, isModalClick, onClickNotify }) => {
 ClientItem.propTypes = {
   item: PropTypes.object,
   isModalClick: PropTypes.func,
+  isModalTextClick: PropTypes.func,
   onClickNotify: PropTypes.func,
 };
