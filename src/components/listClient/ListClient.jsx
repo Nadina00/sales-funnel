@@ -45,6 +45,7 @@ export const ListClient = ({ notify }) => {
         <table className={css.table_blur}>
           <thead>
             <th>Відділення</th>
+            <th>Дата</th>
             <th>ПІБ</th>
             <th>ІПН</th>
             <th>Телефон</th>
@@ -66,6 +67,7 @@ export const ListClient = ({ notify }) => {
                     isModalClick={isModalClick}
                     isModalTextClick={isModalTextClick}
                     onClickNotify={notify}
+                    className={css.item}
                   />
                 </tr>
               ))

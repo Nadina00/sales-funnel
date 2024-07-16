@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const FormAddClient = () => {
   const [isModalText, setIsModalText] = useState(false);
   const [textNote, setTextNote] = useState("");
+  const [date, setDate] = useState("")
   const [name, setName] = useState("");
   const [ipn, setIpn] = useState(null);
   const [tel, setTel] = useState(null);
@@ -22,7 +23,13 @@ export const FormAddClient = () => {
   const departmentNum = useSelector(department);
   const dispatch = useDispatch();
   const errorAdd = useSelector(errorClient);
-
+  
+  
+  const handleChangeDate = (e) => {
+    e.preventDefault();
+    setDate(e.target.value);
+  };
+ 
   const handleChangeName = (e) => {
     e.preventDefault();
     setName(e.target.value);
@@ -63,11 +70,12 @@ export const FormAddClient = () => {
   const onChangeText = (note) => {
     setTextNote(note);
   };
-console.log(textNote)
+console.log(date)
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(
       formOperations.addClient({
+        date,
         name,
         ipn,
         tel,
@@ -87,7 +95,16 @@ console.log(textNote)
     setIntrest("Зацікавлений");
     setSum(null);
   };
-
+console.log(    date,
+  name,
+  ipn,
+  tel,
+  credit,
+  targetCredit,
+  sum,
+  intrest,
+  departmentNum,
+  textNote)
   const notify = () => {
     if (errorAdd) {
       toast("Помилка!");
@@ -98,6 +115,16 @@ console.log(textNote)
   return (
     <div className={css.box}>
       <form onSubmit={onSubmit}>
+      <label className={css.label}>
+          {" "}
+          Дата
+          <input
+            type="date"
+            onChange={handleChangeDate}
+            placeholder="Дата"
+            value={date}
+          />
+        </label>
         <label className={css.label}>
           {" "}
           ПІБ чи назва фірми

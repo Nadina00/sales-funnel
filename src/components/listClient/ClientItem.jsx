@@ -26,10 +26,21 @@ export const ClientItem = ({ item, isModalClick, onClickNotify, isModalTextClick
     setIsModalText(true);
     isModalTextClick(isModalText, item);
   };
-  console.log(isModal);
-  return (
+  const dateForm = item.date
+  const truncateDateString = (dateString) => {
+    if (typeof dateString === 'string' && dateString.includes('T')) {
+      return dateString.split('T')[0];
+    }
+    return " ";
+  };
+
+  const formattedDate = truncateDateString(dateForm) 
+  console.log(formattedDate)
+     
+    return (
     <>
       <td data-label="Відділення">{item.departmentNum}</td>
+      <td data-label="Дата"> {formattedDate}</td>
       <td data-label="ПІБ">{item.name}</td>
 
       <td data-label="ІПН">{item.ipn}</td>

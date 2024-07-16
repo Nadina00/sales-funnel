@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import modalCss from "./Modal.module.css";
 
 export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
+  const [date, setDate] = useState('')
   const [name, setName] = useState(item.name);
   const [ipn, setIpn] = useState(item.ipn);
   const [tel, setTel] = useState(item.tel);
@@ -15,6 +16,11 @@ export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
   const [sum, setSum] = useState(item.sum);
   const [intrest, setIntrest] = useState(item.intrest);
   const dispatch = useDispatch();
+
+  const handleChangeDate = (e) => {
+    e.preventDefault();
+    setDate(e.target.value);
+  };
   
   const handleChangeName = (e) => {
     e.preventDefault();
@@ -52,6 +58,7 @@ export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
     dispatch(
       formOperations.updateClient({
         id: item._id,
+        date,
         name,
         ipn,
         tel,
@@ -86,6 +93,16 @@ export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
           </svg>
         </button>
         <form onSubmit={onSubmit}>
+        <label className={css.label}>
+            {" "}
+            Дата
+            <input
+              type="date"
+              onChange={handleChangeDate}
+              placeholder="Дата"
+              value={date}
+            />
+          </label>
           <label className={css.label}>
             {" "}
             ПІБ чи назва фірми

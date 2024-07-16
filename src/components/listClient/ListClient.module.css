@@ -93,6 +93,7 @@
     padding-left: 40%;
     border: none;
     margin-bottom: 10px;
+    min-height: 15px;
   }
   .table_blur td::before {
     content: attr(data-label);
@@ -102,7 +103,9 @@
   .table_blur td:nth-child(odd) {
     background-color: #ccc;
   }
+  
 }
+
 
 @media screen and (max-width: 768px) {
   .box{
@@ -130,5 +133,8 @@
   }
   .table_blur td:nth-child(odd) {
     background-color: #fff;
+  }
+  .item{
+    margin-bottom: 20px;
   }
 }
