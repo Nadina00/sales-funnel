@@ -105,10 +105,15 @@ console.log(    date,
   intrest,
   departmentNum,
   textNote)
+
   const notify = () => {
     if (errorAdd) {
       toast("Помилка!");
-    } else {
+    } 
+    if ( !name) {
+      toast("Вкажіть ПІБ чи назву клієнта!");
+    }
+    else {
       toast("Збережено!");
     }
   };
@@ -133,6 +138,7 @@ console.log(    date,
             onChange={handleChangeName}
             placeholder="ПІБ чи назва фірми"
             value={name}
+            required
           />
         </label>
         <label className={css.label}>

@@ -130,7 +130,7 @@ export const Modal = ({ item, departmentNum, onClose, onClickNotify }) => {
               type="tel"
               onChange={handleChangeTel}
               pattern="0\d{9}"
-              placeholder="067000000"
+              placeholder="0670000000"
               value={tel}
             />
           </label>
