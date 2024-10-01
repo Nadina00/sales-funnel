@@ -11,7 +11,7 @@ export const ListClient = () => {
   console.log(departmentNum);
 
   return (
-    <div>
+    <div className={css.table_container}>
       <p> Відділення {departmentNum}</p>
       <table className={css.table_blur}>
         <tr>
@@ -25,7 +25,7 @@ export const ListClient = () => {
           <th>Видалити</th>
         </tr>
         {!list ? (
-          <p>Loader</p>
+          <p className={css.loader}>Loader</p>
         ) : (
           list.map((item) => (
             <tr key={item._id}>
