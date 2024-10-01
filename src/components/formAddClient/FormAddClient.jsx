@@ -73,7 +73,7 @@ export const FormAddClient = () => {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className={css.form_container}>
         <label className={css.label}>
           {" "}
           ПІБ чи назва фірми
